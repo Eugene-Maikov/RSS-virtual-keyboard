@@ -3,10 +3,10 @@ let keyboard = [113, 119, 101, 114, 116, 121, 117, 105, 111, 112, 91, 93, 97, 11
 function init() {
   let out = ''
   for (let i = 0; i < keyboard.length; i++) {
-    if (i == 12 || i == 23) {
+    if(i ==12 || i == 23){
       out += '<div class="keyboard__clean"></div>'
     }
-    out += '<div class="keyboard__item"' + keyboard[i] + String.fromCharCode(keyboard[i]) + '</div>'
+    out += '<div class="keyboard__item" data="' + keyboard[i] + '" >' + String.fromCharCode(keyboard[i]) + '</div>'
     document.querySelector('.keyboard').innerHTML = out
   }
 }
