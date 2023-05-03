@@ -13,4 +13,25 @@ function init() {
 
 init()
 
-alert('Пока только выводятся клавиши через JS (и то не все)')
+const keyboardItems = document.querySelectorAll('.keyboard__item')
+
+document.onkeypress = function (e){
+  console.log(e.code)
+  console.log(e.keyCode)
+
+  keyboardItems.forEach((item) => {
+    item.classList.remove('active')
+  })
+  document.querySelector('.keyboard__item[data="' + e.keyCode + '"]').classList.add('active')
+}
+
+keyboardItems.forEach((item) => {
+  item.onclick = function (e){
+    keyboardItems.forEach((item) => {
+      item.classList.remove('active')
+    })
+    let code = this.getAttribute('data')
+    this.classList.add('active')
+    console.log(code)
+  }
+})
